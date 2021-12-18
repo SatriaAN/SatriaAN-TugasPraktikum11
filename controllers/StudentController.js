@@ -1,5 +1,6 @@
 // TODO 3: Import data students dari folder data/students.js
 // code here
+const { stdin } = require("nodemon/lib/config/defaults");
 const students = require("../data/student");
 
 // Membuat Class StudentController
@@ -16,12 +17,13 @@ class StudentController {
   }
   store(req, res) {
     const { nama } = req.body;
+    students.push(nama);
 
     // TODO 5: Tambahkan data students
     // code here
     const data = {
       message: `Menambahkan data student`,
-      data: [nama],
+      data: [students],
     };
 
     res.json(data);
@@ -30,12 +32,12 @@ class StudentController {
   update(req, res) {
     const { id } = req.params;
     const { nama } = req.body;
-
+    students[id] = nama;
     // TODO 6: Update data students
     // code here
     const data = {
       message: `Mengedit student id ${id}, nama ${nama}`,
-      data: [id, nama],
+      data: [students],
     };
 
     res.json(data);
@@ -44,12 +46,13 @@ class StudentController {
   destroy(req, res) {
     const { id } = req.params;
     const { nama } = req.body;
+    students[id] = nama;
 
     // TODO 7: Hapus data students
     // code here
     const data = {
-      message: `Menghapus student id ${id}`,
-      data: [nama],
+      message: `Menghapus student id ${id} nama ${nama}`,
+      data: [students],
     };
 
     res.json(data);
