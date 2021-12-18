@@ -46,7 +46,7 @@ class StudentController {
   destroy(req, res) {
     const { id } = req.params;
     const { nama } = req.body;
-    students[id] = nama;
+    students.splice(id,1);
 
     // TODO 7: Hapus data students
     // code here
